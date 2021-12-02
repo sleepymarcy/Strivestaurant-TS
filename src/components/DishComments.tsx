@@ -1,6 +1,11 @@
 import ListGroup from 'react-bootstrap/ListGroup'
+import { Dish } from '../types/interfaces'
 
-const DishComments = (props) => (
+interface DishCommentsProps {
+  selectedDish?: Dish
+}
+
+const DishComments = (props: DishCommentsProps) => (
   <ListGroup>
     {props.selectedDish ? (
       props.selectedDish.comments.map((c) => (

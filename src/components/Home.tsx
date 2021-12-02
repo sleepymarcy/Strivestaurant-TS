@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Carousel, Container, Col, Row } from 'react-bootstrap'
 import items from '../data/menu.json'
+import { Dish } from '../types/interfaces'
 import DishComments from './DishComments'
 
 const Home = () => {
-  const [selectedDish, setSelectedDish] = useState(undefined)
+  const [selectedDish, setSelectedDish] = useState<Dish | undefined>(undefined)
 
   return (
     <Container>
@@ -13,7 +14,7 @@ const Home = () => {
           <h1>Welcome to Strivestaurant!</h1>
           <p>We can serve only pasta</p>
           <Carousel className='mt-5'>
-            {items.map((pastaObject) => (
+            {items.map((pastaObject: Dish) => (
               <Carousel.Item key={pastaObject.id}>
                 <img
                   className='d-block w-100'

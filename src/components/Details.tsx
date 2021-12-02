@@ -3,15 +3,18 @@ import { useParams } from 'react-router-dom'
 import dishes from '../data/menu.json'
 import DishComments from './DishComments'
 import { Col, Row, Container } from 'react-bootstrap'
+import { Dish } from '../types/interfaces'
 
 const Details = () => {
-  const [pasta, setPasta] = useState(undefined)
+  const [pasta, setPasta] = useState<Dish | undefined>(undefined)
 
   const params = useParams()
 
   useEffect(() => {
     let pastaId = params.pastaId
-    let pastaToShow = dishes.find((pasta) => pasta.id.toString() === pastaId)
+    let pastaToShow: Dish | undefined = dishes.find(
+      (pasta) => pasta.id.toString() === pastaId
+    )
     setPasta(pastaToShow)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
